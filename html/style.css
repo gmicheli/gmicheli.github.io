@@ -1,0 +1,81 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+		font-family:Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif;
+		background-color:#edf1d9;
+}
+
+a {
+	color:#C0F;	
+}
+
+a:hover {
+	color:#f14e32;	
+}
+
+#header {
+	width:80%;
+	margin: 10px auto auto auto;	
+}
+
+#header > div{
+	display:inline-block;
+}
+
+#headshot {
+	float:left;
+	margin-bottom:15px;;		
+}
+
+#heading {
+    float:right;
+    text-align:right;
+}
+
+h1 {
+	
+	font-size:xx-large;
+	color:#333
+}
+
+h2 {
+	font-size: x-large;
+	color: #666
+}
+
+#information {
+	clear:both;
+}
+
+.content {
+	max-width:800px;
+	width:70%;
+	margin-left:auto;
+	margin-right:auto;	
+}
+
+
+#education-table {
+    width:100%;
+    text-align: left;
+    font-weight: normal;
+}
+#education-table th {
+    font-weight: inherit;
+}
+#education-table th span:first-child {
+    font-weight: bold;
+}
+#education-table th span:nth-child(2) {
+    font-style: italic;
+}
+
+
+#miscellaneous {
+    float: left;
+}
+
+#mountains {
+    float: right;
+}

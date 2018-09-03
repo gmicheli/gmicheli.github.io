@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name=keywords content="Gabrielle De Micheli"/> <meta name=description content="Gabrielle De Micheli's Personal Homepage at The University of Pennsylvania"/>
+    <title>Gabrielle De Micheli - University of Pennsylvania</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <div class="content" itemscope itemtype="http://schema.org/Person" role="main">
+	<div id="headshot" class="header"> <img itemprop="image" src="headshot.jpg" alt="Gabrielle De Micheli" width="200px" height="218px" /> </div>
+      <div id="header">
+	<div id="heading">
+	  <h1 itemprop="name"><span itemprop="givenName">Gabrielle</span><span itemprop="familyName"> De Micheli</span></h1>
+	  <h2 itemprop="jobTitle">Ph.D. Student</h2>
+	</div>
+
+      </div>
+      <div id="information">
+	<hr>
+	<div id="about">
+	  <h3>About Me</h3>
+	<p> I am aa first year PhD student at the University of Pennsylvania working with Nadia Heninger. Currently, I am focusing on the mathematical aspects of applied cryptography.   
+<p>
+	</div>
+	<div id="education">
+	  <h3>Education</h3>
+	  <table id="education-table">
+	    <tr>
+	      <th>October 2016</th>
+	      <th><span>Master of Mathematics</span>,<span> EPFL</span>, Lausanne, Switzerland</th>
+	    </tr>
+	    <tr>
+	      <th>Sept 2015 - Jan 2016</th>
+	      <th><span>Master Thesis</span>,<span> Imperial College</span>, London, UK</th>
+	    </tr>
+	    <tr>
+	      <th>July 2014</th>
+	      <th><span>Bachelor of Mathematics</span>,<span> EPFL</span>, Lausanne, Switzerland</th>
+	     </tr>
+	  </table>
+	    </div>
+	       
+	<div id="contact">
+	  <h3> Contact Information</h3>
+	  <table>
+            <tbody>
+              <tr>
+		<td width="83" height="95" valign="top">Address</td>
+		<td width="160" valign="top" itemprop="address" itemtype="http://schema.org/PostalAddress"><span itemprop="streetAddress">Distribued Systems Lab<br />
+		    3300 Walnut St<br />
+		    Philadelphia PA, </span><span itemprop="postalCode">19104</span><br />
+		  <span itemprop="country">USA</span></td>
+              </tr>
+              <tr>
+		<td height="36" valign="top">Email</td>
+		<td valign="top">gmicheli<strong>[at]</strong>seas.upenn.edu</td>
+              </tr>
+            </tbody>
+	  </table>
+	</div>
+	<div style="clear:both;"></div>
+	<div id="interests">
+	  <h3>Fields of Interest</h3>
+	  <p>Applied Cryptography, Security, Algebra, Geometry (Riemannian Geometry), General Relativity</p>
+	</div>
+	<div id="tutoring">
+	  <h3>Tutoring/TAing</h3>
+	  <ul>
+            <li> <strong>2013 Spring Semester (EPFL)</strong> - General Phyiscs II</li>
+	  </ul>
+	</div>
+      </div>
+      <div id="miscellaneous">
+	<h3>Other interest</h3>
+	<ul>
+	  <li>I play the piano.</li>
+	  <li>I enjoy mountaineering and traveling the world. </li>
+	</ul>
+      </div>
+      <hr>
+      <footer>Gabrielle De Micheli<br>University of Pennsylvania<br> 2016</footer>
+    </div>
+
+
+  </body>
+</html>
