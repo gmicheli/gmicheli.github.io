@@ -24,13 +24,13 @@ a:hover {
 }
 
 #headshot {
-	float:right;
+	float:left;
 	margin-bottom:10px;;		
 }
 
 #heading {
-    float:left;
-    text-align:left;
+    float:right;
+    text-align:right;
 }
 
 h1 {
