@@ -1,0 +1,136 @@
+Subject: Discrete logarithm in GF(p^6) with Tower NFS
+
+Dear number theorists,
+
+It is our pleasure to announce a new record discrete logarithm
+computation in a 521-bit finite field of the form GF(p^6). Previous
+similar computations [1,2] reached 422 and 423 bits respectively and
+used the classical Number Field Sieve (NFS) approach, while sieving in
+dimension 3.
+
+For our computation we used the extended Tower NFS [3], with an
+intermediate number field of degree 3, leading to sieving in dimension 6.
+The advantages of using this version of NFS more than compensate the
+difficulties of sieving in high dimension, and the time we spent for
+collecting relations is less than in the previous computations, while the
+target finite field is larger.
+
+Our sieving method uses a new approach based on Schnorr-Euchner's
+enumeration algorithm that we adapted for our setting. We also abandoned
+the tradition of sieving in an orthotope (rectangle in 2d, cuboid in 3d,
+...), and used an L2 sphere as a sieving area.
+
+Here is some data on each step. All timings are scaled to a single
+physical core of a machine with 2 CPUs Intel Xeon Gold 6130 with 192 GB
+of RAM.
+
+** Target finite field:
+
+  p = 135066410865995223349603927
+  ell = 18242935344221832539906081412848119704309124424217403
+
+The decimal digits of the prime p are taken from the digits of the
+RSA1024 challenge. We are interested in the 'new' part of the
+multiplicative group, and therefore we work modulo ell = p^2 - p + 1.
+We chose the example so that ell is also prime, which is the hardest
+case.
+
+** Polynomial selection:
+
+The common subfield of degree 3 is given by
+   h(y) = y^3 - y + 1
+which is irreducible modulo p. On top of this, the Conjugation
+polynomial selection was used, leading to
+   f1(x) = x^4 + 1
+   f2(x) = 11672244015875*x^2 + 1532885840586*x + 11672244015875
+and f2 divides f1 modulo p.
+
+** Relation collection:
+
+We used the special-q approach; the sieving area for each special-q was
+an L2-sphere of radius 21. We used 1.28 M different special-q ideals, on
+the f2-side, starting with qmin = 5e6. We applied our enumeration strategy
+on the f2-side, for prime ideals up to 1e7, and then handled promising
+candidates with a batch smoothness test on both sides. The large prime
+bound was set to 2^27 on both sides.
+
+18.7 M relations were collected in about 2.9 core-years (or 25,300
+core-hours).
+
+** Filtering, Schirokauer maps, linear algebra:
+
+We re-used as much as possible the tools from CADO-NFS [4] for these
+steps, but several intermediate conversion utilities were written to
+take into account the specificities of the Tower setting.
+
+Relations after duplicate-removal: 13.6 M
+Size of the matrix after singleton-removal: 5.21 M
+Matrix after structured Gaussian elimination:
+  size: 1.51 M
+  density: 150 coefs/row on average
+Number of Schirokauer maps: 5 + 2
+
+The linear algebra was run using the default Block-Wiedemann parameters
+from CADO-NFS: a block-factor equal to the number of Schirokauer maps, so
+that 7 sequences could be run independently on different machines.
+The time for this step is equivalent to 0.16 core-years (1,400
+core.hours).
+
+** Individual logarithm:
+
+The representation of GF(p^6) is naturally obtained as a degree-2
+extension (defined by f2(x)) of the field GF(p^3) defined by h(y).
+We took as a generator the element x + y and for target element a
+"random" element whose decimals are taken from Pi (see verification
+script).
+
+The element x + y, lifted in the field defined by f1 is a unit (of
+infinite order), and therefore its logarithm could be directly deduced
+from the kernel vector and an additional Schirokauer map computation.
+
+For the target element, we used Guillevic's algorithm [5] for the initial
+splitting, which led to a 35-bit smooth element. The prime factors for
+which we didn't have the virtual logarithm were descended in one single
+special-q step.
+
+** Total time:
+
+The total time spent for the main phases (sieving + linear algebra) was
+26,700 core.hours. But we mention that while the computation was running,
+further optimisation to the code was done, and our current code would
+save almost 10% on the relation collection step. There is also an easy
+factor of 2 to save by using the Galois action; and we expect that the
+parameters could be much better tuned than what we did for this first
+experiment.
+
+** Acknowledgements:
+
+Many thanks to Aurore Guillevic, in particular for the polynomial
+selection choice.
+All the computations were done on the Grid5000 facility.
+
+More details will be given in a forthcoming paper.
+
+Best regards,
+
+Gabrielle De Micheli
+Pierrick Gaudry
+Cécile Pierrot
+
+[1] L. Grémy, A. Guillevic, F. Morain and E. Thomé: Computing discrete
+    logarithms in F_{p^6}. SAC 2017, LNCS, pp 85-105
+
+[2] G. McGuire and O. Robinson: Lattice sieving in three dimensions for
+    discrete log in medium characteristic. Journal of Mathematical
+    Cryptology 15:1, pp. 223-236, 2021
+
+[3] T. Kim and R. Barbulescu: Extended tower number field sieve: a new
+    complexity for the medium prime case. CRYPTO 2016, LNCS, pp 543-571
+
+[4] The CADO-NFS development team: Cado-nfs, an implementation of the
+    number Field sieve algorithm (2019), available at
+    https://gitlab.inria.fr/cado-nfs/cado-nfs
+
+[5] A. Guillevic: Faster individual discrete logarithms in finite fields
+    of composite extension degree. Mathematics of Computation 88(317):1,
+    2018
